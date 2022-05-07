@@ -1,37 +1,37 @@
 /* See LICENSE file for copyright and license details. */
 
 static char *fontfallbacks[] = {
+	"Ubuntu:style=Light",
 	"Fira Code Nerd Font",
-	"roboto",
-	"ubuntu",
+	"roboto"
 };
 #define NUMFONTSCALES 42
 #define FONTSZ(x) ((int)(10.0 * powf(1.1288, (x)))) /* x in [0, NUMFONTSCALES-1] */
 
 static const char *colors[] = {
-	"#DFDFDF", /* foreground color */
-	"#121212", /* background color */
+	"#B7BCD4", /* foreground color */
+	"#1F2437", /* background color */
 };
 
 
 static const char *greencolors[] = {
-	"#1e8e3e", /* foreground color */
-	"#121212", /* background color */
+	"#E675A8", /* foreground color */
+	"#1F2437", /* background color */
 };
 
 static const char *yellowcolors[] = {
-	"#f9ab00", /* foreground color */
-	"#121212", /* background color */
+	"#8A8BBE", /* foreground color */
+	"#1F2437", /* background color */
 };
 
 static const char *redcolors[] = {
-	"#d93025", /* foreground color */
-	"#121212", /* background color */
+	"#FF7965", /* foreground color */
+	"#1F2437", /* background color */
 };
 
 static const char *bluecolors[] = {
-	"#536DFE", /* foreground color */
-	"#121212", /* background color */
+	"#F1739A", /* foreground color */
+	"#1F2437", /* background color */
 };
 
 static const float linespacing = 1.4;

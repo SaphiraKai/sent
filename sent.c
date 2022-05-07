@@ -12,6 +12,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <X11/extensions/Xrandr.h>
 #include <X11/keysym.h>
 #include <X11/XKBlib.h>
 #include <X11/Xatom.h>
@@ -551,6 +552,14 @@ void animrect(int x1, int y1, int w1, int h1, int x2, int y2, int w2, int h2) {
 	int framecount = 10;
 	double timefactor = 0;
 
+	XRRScreenConfiguration *conf = XRRGetScreenInfo(xw.dpy, RootWindow(xw.dpy, 0));
+	short refresh_rate = XRRConfigCurrentRate(conf);
+
+	// scale the framerate properly for !=60Hz displays
+	framecount = framecount * (refresh_rate / 60);
+	double usecs = (1 / (double)refresh_rate) * 1000000;
+
+
 	prevscm = d->scheme;
 	drw_setscheme(d, scblue);
 	while (time < framecount)
@@ -560,7 +569,7 @@ void animrect(int x1, int y1, int w1, int h1, int x2, int y2, int w2, int h2) {
 		//drw_rect(d, 0, 0, xw.w, xw.h, 1, 1);
 		drw_map(d, xw.win, 0, 0, xw.w, xw.h);
 		time++;
-		usleep(19000);
+		usleep(usecs);
 	}
 	drw_setscheme(d, prevscm);
 
